@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Library — The Telepathy Center</title>
+  <meta name="description" content="Talks, papers, podcasts, and lineage for calm, humane telepathy research and coherent connection." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <!-- Sora + Inter to match TTC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --paper:#FAFBF8; --ink:#0E1116; --muted:#4B5563; --line:#E4E9E0; --card:#FFFFFF; --grid:#EEF3EA;
+      --indigo:#4F46E5; --teal:#0EA5A4; --fern:#2E5D44; --moon:#8BA3FF; --gold:#D7B56A; --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink); font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif; line-height:1.6;
+      background:
+        radial-gradient(900px 480px at 80% -10%, rgba(139,163,255,.08), transparent 60%),
+        radial-gradient(800px 420px at 10% 110%, rgba(46,93,68,.08), transparent 60%),
+        var(--paper);
+    }
+    body::before{
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+      background-image: radial-gradient(circle at 1px 1px, var(--grid) 1px, transparent 0);
+      background-size:18px 18px; opacity:.65;
+    }
+    h1,h2,h3{font-family:"Sora",system-ui,sans-serif;margin:0 0 .6rem}
+    h1{font-weight:700;font-size:clamp(2rem,4.6vw,3rem)}
+    h2{font-weight:700;font-size:clamp(1.4rem,2.8vw,1.8rem)}
+    h3{font-weight:600;font-size:1.05rem}
+    p{margin:0 0 1rem;color:var(--muted)}
+    a{color:var(--fern);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{width:min(1120px,92%);margin:0 auto}
+    .site-head{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px);background:rgba(250,251,248,.85);border-bottom:1px solid var(--line)}
+    .site-head .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:var(--ink)}
+    .brand:hover{text-decoration:none}
+    .logo{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:16px;
+      background: radial-gradient(circle at 32% 32%, var(--moon), transparent 62%),
+                  radial-gradient(circle at 70% 70%, var(--fern), transparent 60%), #1A3A2A;}
+    .wordmark{font-size:1.02rem}
+    .nav{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .nav a{padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:700}
+    .nav a:hover{background:rgba(46,93,68,.10);text-decoration:none;color:var(--ink)}
+    .section{padding:64px 0}
+    .kicker{display:inline-block;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--fern);
+      background:rgba(46,93,68,.1);border:1px solid rgba(46,93,68,.25);padding:6px 10px;border-radius:999px;font-size:.8rem;margin-bottom:12px}
+    .filters{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 6px}
+    .chip{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:700;background:#fff;cursor:pointer}
+    .chip[aria-pressed="true"]{background:linear-gradient(135deg,var(--fern),#2d7b56);color:#fff;border-color:transparent}
+    .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:0 8px 30px rgba(2,6,23,.05)}
+    .meta{font-size:.86rem;color:#6B7280}
+    .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:.75rem;font-weight:800;border:1px solid var(--line);background:#fff}
+    .hero-embed{aspect-ratio:16/9;width:100%;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#000}
+    .hero{padding:84px 0 24px}
+    .divider{width:100%;height:1px;margin:32px 0;background:linear-gradient(90deg,transparent,var(--fern),transparent);position:relative}
+    .divider::after{content:"✶";position:absolute;left:50%;top:-14px;transform:translateX(-50%);color:var(--gold);text-shadow:0 0 10px rgba(215,181,106,.28);font-family:"Sora",sans-serif}
+    .foot{padding:42px 0;border-top:1px solid var(--line);color:#6B7280}
+    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+  </style>
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="/"><span class="logo" aria-hidden="true">λ</span><span class="wordmark">The Telepathy Center</span></a>
+      <nav aria-label="Primary">
+        <ul class="nav">
+          <li><a href="/#mission">Mission</a></li>
+          <li><a href="/#model">Dual Model</a></li>
+          <li><a href="/#programs">Programs</a></li>
+          <li><a href="/#methods">Methods</a></li>
+          <li><a href="/library.html" aria-current="page">Library</a></li>
+          <li><a href="/#participate">Participate</a></li>
+          <li><a href="/#care">Consent & Care</a></li>
+          <li><a href="/#about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero">
+      <span class="kicker">Talks • Papers • Podcasts • Lineage</span>
+      <h1>Library</h1>
+      <p>Curated for truth-seekers: a calm path through the noise—talks and field notes, classic papers, podcasts, and new work that excites us.</p>
+      <div class="divider" aria-hidden="true"></div>
+
+      <!-- FEATURED TALK -->
+      <h2 id="featured">Featured Talk</h2>
+      <p class="meta">A night that feels like our North Star.</p>
+      <div class="hero-embed" role="group" aria-labelledby="featured">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/aX9ogv0PEug" title="Telepathy Camp | Jumpsuit" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p style="margin-top:.5rem" class="meta">Telepathy Camp by Jumpsuit; related channel & sponsor notes: <a href="https://www.youtube.com/@jumpsuitagency" target="_blank" rel="noopener">YouTube channel</a>, <a href="https://www.jumpsuitagency.com/telepathy" target="_blank" rel="noopener">Telepathy Tapes sponsor page</a>. </p>
+    </section>
+
+    <!-- FILTERS -->
+    <section aria-labelledby="filterheading" class="section" style="padding-top:24px">
+      <h2 id="filterheading" class="sr-only">Filter library</h2>
+      <div class="filters" role="toolbar" aria-label="Filter">
+        <button class="chip" data-tag="all" aria-pressed="true">All</button>
+        <button class="chip" data-tag="talk">Talks & Videos</button>
+        <button class="chip" data-tag="paper">Papers & Reports</button>
+        <button class="chip" data-tag="podcast">Podcasts</button>
+        <button class="chip" data-tag="classic">Classics & Lineage</button>
+        <button class="chip" data-tag="new">New & Noteworthy</button>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <section class="section" style="padding-top:24px">
+      <div class="grid" id="grid">
+        <!-- TALKS & VIDEOS -->
+        <article class="card" data-tags="talk new">
+          <span class="badge">Talk</span>
+          <h3><a href="https://www.youtube.com/watch?v=aX9ogv0PEug" target="_blank" rel="noopener">Telepathy Camp | Jumpsuit</a></h3>
+          <p class="meta">Playful, consent-forward camp-night vibe that mirrors our aims. (Jumpsuit channel <a href="https://www.youtube.com/@jumpsuitagency" target="_blank" rel="noopener">here</a>.)</p>
+        </article>
+
+        <article class="card" data-tags="talk">
+          <span class="badge">Video</span>
+          <h3><a href="https://www.youtube.com/watch?v=s9jnRPz3Cqc" target="_blank" rel="noopener">Telepathy | Jumpsuiters Ep. 6</a></h3>
+          <p class="meta">A conversational look at shared-mind experiences from the Jumpsuit community.</p>
+        </article>
+
+        <!-- PAPERS & REPORTS -->
+        <article class="card" data-tags="paper new">
+          <span class="badge">Meta-analysis</span>
+          <h3><a href="https://f1000research.com/articles/10-234" target="_blank" rel="noopener">Anomalous Perception in the Ganzfeld</a></h3>
+          <p class="meta">Tressoldi (2024) meta-analysis covering 1974–2020 Ganzfeld studies (registered report). </p>
+        </article>
+
+        <article class="card" data-tags="paper">
+          <span class="badge">Review</span>
+          <h3><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3971164/" target="_blank" rel="noopener">Predictive Anticipatory Activity (Presentiment)</a></h3>
+          <p class="meta">Mossbridge, Tressoldi & Utts (2014) review of predictive physiological effects; see also 2012 meta-analysis. </p>
+        </article>
+
+        <article class="card" data-tags="paper classic">
+          <span class="badge">Classic</span>
+          <h3><a href="https://philpapers.org/rec/HONMOP" target="_blank" rel="noopener">Honorton’s Meta-analysis of Ganzfeld ESP</a></h3>
+          <p class="meta">Foundational 1980s debate + joint communiqué with critic Ray Hyman.</p>
+        </article>
+
+        <!-- PODCASTS -->
+        <article class="card" data-tags="podcast new">
+          <span class="badge">Podcast</span>
+          <h3><a href="https://www.jumpsuitagency.com/telepathy" target="_blank" rel="noopener">The Telepathy Tapes</a></h3>
+          <p class="meta">Sponsor page with links/notes; use this as a hub while a consolidated feed is evolving.</p>
+        </article>
+
+        <!-- CLASSICS & LINEAGE -->
+        <article class="card" data-tags="classic">
+          <span class="badge">Lineage</span>
+          <h3><a href="https://en.wikipedia.org/wiki/Society_for_Psychical_Research" target="_blank" rel="noopener">Society for Psychical Research (SPR)</a></h3>
+          <p class="meta">Historic context (founded 1882); William James engaged early telepathy debate.</p>
+        </article>
+
+        <article class="card" data-tags="classic">
+          <span class="badge">Essay</span>
+          <h3><a href="https://www.forbiddenhistories.com/2014/07/william-james-on-telepathy/" target="_blank" rel="noopener">William James on “Telepathy”</a></h3>
+          <p class="meta">Short historical piece referencing early SPR casework.</p>
+        </article>
+
+        <!-- NEW & NOTEWORTHY / DATA PROJECTS -->
+        <article class="card" data-tags="new">
+          <span class="badge">Data project</span>
+          <h3><a href="https://noosphere.princeton.edu/" target="_blank" rel="noopener">Global Consciousness Project</a></h3>
+          <p class="meta">Long-running RNG network exploring group coherence correlations; overview & data archive.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="foot wrap">
+      <p>Have a suggestion or publication to add? <a href="mailto:hello@thetelepathycenter.org">hello@thetelepathycenter.org</a></p>
+    </section>
+  </main>
+
+  <script>
+    // Simple tag filter
+    const chips = document.querySelectorAll('.chip');
+    const grid = document.getElementById('grid');
+    const cards = grid.querySelectorAll('.card');
+    chips.forEach(ch => ch.addEventListener('click', () => {
+      chips.forEach(c => c.setAttribute('aria-pressed','false'));
+      ch.setAttribute('aria-pressed','true');
+      const tag = ch.dataset.tag;
+      cards.forEach(card => {
+        if(tag === 'all'){ card.style.display = ''; return; }
+        const tags = card.getAttribute('data-tags') || '';
+        card.style.display = tags.includes(tag) ? '' : 'none';
+      });
+    }));
+  </script>
+</body>
+</html>
