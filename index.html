@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Telepathy Center — A Sanctuary for Coherence & Connection</title>
+  <meta name="description" content="A calm, consent-forward sanctuary blending nature, coherence practices, and research. Supporting families and non-speakers while advancing humane telepathy studies." />
+  <meta property="og:title" content="The Telepathy Center" />
+  <meta property="og:description" content="Grounded, mystical, and safe. A dual-structure center for families, non-speakers, and research into coherent connection." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Sora (headings) + Inter (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --paper:#FAFBF8; --ink:#0E1116; --muted:#4B5563; --line:#E4E9E0; --card:#FFFFFF; --grid:#EEF3EA;
+      --canopy:#1A3A2A; --fern:#2E5D44; --moss:#6AA77E; --moon:#8BA3FF; --gold:#D7B56A; --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;color:var(--ink);
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+      background:
+        radial-gradient(900px 480px at 80% -10%, rgba(139,163,255,.08), transparent 60%),
+        radial-gradient(800px 420px at 10% 110%, rgba(106,167,126,.10), transparent 60%),
+        var(--paper);
+    }
+    body::before{
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+      background-image:
+        radial-gradient(circle at 1px 1px, var(--grid) 1px, transparent 0),
+        repeating-linear-gradient(0deg, rgba(0,0,0,.02) 0 2px, transparent 2px 4px);
+      background-size:18px 18px, 100% 6px; opacity:.65;
+    }
+
+    h1,h2,h3{font-family:"Sora",system-ui,sans-serif;margin:0 0 .6rem}
+    h1{font-weight:700;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.12; letter-spacing:.2px}
+    h2{font-weight:700;font-size:clamp(1.6rem,3vw,2.1rem)}
+    h3{font-weight:600;font-size:1.12rem}
+    p{margin:0 0 1rem;color:var(--muted)}
+    a{color:var(--fern);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{width:min(1120px,92%);margin:0 auto}
+    .section{padding:72px 0;position:relative}
+    .section.alt{background:linear-gradient(180deg,rgba(46,93,68,.06),rgba(139,163,255,.05),transparent)}
+
+    .site-head{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px);
+      background:rgba(250,251,248,.85); border-bottom:1px solid var(--line)}
+    .site-head .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:var(--ink)}
+    .brand:hover{text-decoration:none}
+    .logo{
+      width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:16px;
+      background:
+        radial-gradient(circle at 32% 32%, var(--moon), transparent 62%),
+        radial-gradient(circle at 70% 70%, var(--fern), transparent 60%),
+        var(--canopy);
+    }
+    .wordmark{font-size:1.02rem}
+
+    .nav{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .nav a{padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:700}
+    .nav a:hover{background:rgba(46,93,68,.10);text-decoration:none;color:var(--ink)}
+    .nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--ink);padding:8px 12px;border-radius:8px}
+    @media (max-width:820px){
+      .nav-toggle{display:block}
+      .nav{
+        position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:8px;padding:16px;
+        background:rgba(250,251,248,.98);backdrop-filter:blur(10px);border-top:1px solid var(--line);
+        transform:translateY(-8px);opacity:0;visibility:hidden;transition:all .25s ease;
+      }
+      .nav.open{transform:translateY(0);opacity:1;visibility:visible}
+    }
+
+    .hero{position:relative;overflow:hidden;padding:120px 0 96px}
+    .hero .kicker{
+      display:inline-block;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+      color:var(--fern); background:rgba(46,93,68,.1); border:1px solid rgba(46,93,68,.25);
+      padding:6px 10px; border-radius:999px; font-size:.82rem; margin-bottom:14px;
+    }
+    .hero .lead{font-size:clamp(1.02rem,2.6vw,1.18rem);max-width:70ch;margin:0 auto 1.4rem}
+
+    /* canopy fog + star dust */
+    .veil, .veil::before{
+      content:""; position:absolute; inset:auto; left:-10%; right:-10%; top:-2rem; height:56vh;
+      pointer-events:none; mix-blend-mode:multiply; opacity:.35; filter:blur(18px);
+      background:radial-gradient(70% 90% at 50% -10%, rgba(46,93,68,.20), transparent 70%);
+      animation:slowfloat 18s ease-in-out infinite alternate;
+    }
+    .veil::before{
+      top:auto; bottom:-1rem; height:42vh; opacity:.28; filter:blur(22px);
+      background:radial-gradient(60% 100% at 40% 110%, rgba(139,163,255,.15), transparent 65%);
+      animation:slowfloat2 22s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes slowfloat{from{transform:translateY(-8px)}to{transform:translateY(8px)}}
+    @keyframes slowfloat2{from{transform:translateY(10px)}to{transform:translateY(-10px)}}
+    @media (prefers-reduced-motion:reduce){.veil,.veil::before{animation:none}}
+    .stars{
+      pointer-events:none; position:absolute; inset:0; opacity:.5; z-index:-1;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, #bcd4ff, transparent),
+        radial-gradient(1px 1px at 70% 20%, #fff, transparent),
+        radial-gradient(1px 1px at 30% 80%, #e7f1ea, transparent),
+        radial-gradient(1px 1px at 80% 70%, #dfe9ff, transparent);
+      animation:twinkle 10s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle{0%{opacity:.34}100%{opacity:.74}}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:12px 18px;border-radius:12px;font-weight:800;border:0;cursor:pointer;
+      background:rgba(46,93,68,.1);color:var(--ink);text-decoration:none;
+      transition:transform .15s ease, filter .2s ease, box-shadow .2s ease}
+    .btn:hover{filter:brightness(1.06);text-decoration:none;transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(135deg,var(--fern),#2d7b56);color:#fff;box-shadow:0 6px 22px rgba(46,93,68,.25)}
+    .btn-primary:hover{background:linear-gradient(135deg,var(--moon),#6f86ff);box-shadow:0 8px 26px rgba(139,163,255,.22)}
+
+    .two-col{display:grid;gap:32px;grid-template-columns:1.15fr .85fr;align-items:start}
+    @media (max-width:880px){.two-col{grid-template-columns:1fr}}
+    .three-col{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:0 8px 30px rgba(2,6,23,.05)}
+    .list{margin:0;padding-left:1.15rem}
+    .list li{margin:.35rem 0;color:var(--muted)}
+    .list li::marker{content:"▸ "; color:var(--fern)}
+    .pill{display:inline-block;border:1px solid rgba(0,0,0,.08);padding:6px 10px;border-radius:999px;font-size:.85rem;color:var(--muted);background:#fff}
+    .footnote{align-self:end;color:var(--muted);border-left:2px solid var(--line);padding-left:16px;font-size:.92rem}
+    .divider{width:100%;height:1px;margin:36px 0; position:relative;background:linear-gradient(90deg,transparent,var(--fern),transparent)}
+    .divider::after{content:"✶";position:absolute;left:50%;top:-14px;transform:translateX(-50%);color:var(--gold);text-shadow:0 0 10px rgba(215,181,106,.28);font-family:"Sora",sans-serif}
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="logo" aria-hidden="true">λ</span>
+        <span class="wordmark">The Telepathy Center</span>
+      </a>
+      <nav aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+        <ul id="nav" class="nav">
+          <li><a href="#mission">Mission</a></li>
+          <li><a href="#model">Dual Model</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#methods">Methods</a></li>
+          <li><a href="/library.html">Library</a></li>
+          <li><a href="#participate">Participate</a></li>
+          <li><a href="#care">Consent & Care</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="veil" aria-hidden="true"></div>
+      <div class="wrap" style="text-align:center">
+        <span class="kicker">Calm science. Living mystery.</span>
+        <h1>A sanctuary for coherence & connection.</h1>
+        <p class="lead">Rooted in nature, informed by research, guided by consent. A gentle home for families, non-speakers, and truth-seekers to practice and study connection together.</p>
+        <a class="btn btn-primary" href="#participate">Join a study</a>
+      </div>
+      <div class="stars" aria-hidden="true"></div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- MISSION -->
+    <section id="mission" class="section">
+      <div class="wrap two-col">
+        <div>
+          <h2>Mission</h2>
+          <p>To cultivate grounded spaces—gardens, groves, and gentle rooms—where coherent attention can be practiced and carefully studied. We welcome truth-seekers and families alike, keeping sovereignty and safety at the center.</p>
+          <ul class="list">
+            <li>Warm, non-extractive culture</li>
+            <li>Accessible practices for all bodies & neurotypes</li>
+            <li>Open curiosity, transparent methods</li>
+          </ul>
+        </div>
+        <aside class="card">
+          <div class="pill">Camp Nights</div>
+          <p>Our outdoor “camp night” sessions (inspired by Telepathy Camp’s playful spirit) bring the study outside: blankets, lanterns, shared timing, clear consent cues, and quiet instrumentation. It’s research, but it feels like belonging. </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- DUAL MODEL -->
+    <section id="model" class="section alt">
+      <div class="wrap two-col">
+        <div>
+          <h2>Dual Structure</h2>
+          <p><strong>Nonprofit core:</strong> scholarships, support circles, and assistive communication programs focused on families and non-speakers.</p>
+          <p><strong>For-purpose services:</strong> trainings, retreats, and aligned offerings that sustain the mission and expand access—our alternative path to care.</p>
+        </div>
+        <aside class="card">
+          <h3>Why this model?</h3>
+          <p>It lets us hold the sanctuary while building a resilient ecosystem: community care at the center, sustainable services around it.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section id="programs" class="section">
+      <div class="wrap">
+        <h2>Programs</h2>
+        <div class="three-col" style="margin-top:18px">
+          <div class="card">
+            <h3>Families & Non-Speakers</h3>
+            <ul class="list">
+              <li>Coherence play (gentle timing, shared attention)</li>
+              <li>Assistive tech & alternative communication</li>
+              <li>Parent & caregiver circles</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Studies & Signal Work</h3>
+            <ul class="list">
+              <li>Pre-registered protocols, time-boxed sessions</li>
+              <li>Event-marked tasks, low-noise settings</li>
+              <li>Optional biometrics (opt-in only)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Training & Retreats</h3>
+            <ul class="list">
+              <li>Coherence practices in nature</li>
+              <li>Facilitator foundations (consent, care, clarity)</li>
+              <li>Garden nights under a living sky</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODS -->
+    <section id="methods" class="section alt">
+      <div class="wrap two-col">
+        <div>
+          <h2>Methods</h2>
+          <p>We blend coherence practices with careful measurement and plain-language reports. Sessions are gentle, time-bounded, and revisitable.</p>
+          <ul class="list">
+            <li><strong>Practice:</strong> breath-led settling, shared timing, clear open/close cues</li>
+            <li><strong>Measurement:</strong> event markers, low-light environments, minimal interference</li>
+            <li><strong>Analysis:</strong> effect sizes, confidence intervals, replication goals</li>
+          </ul>
+          <p class="footnote">Context we watch (balanced & evolving): Ganzfeld meta-analyses and presentiment/PAA work; community-data projects like GCP. </p>
+        </div>
+        <aside class="card">
+          <h3>Transparency</h3>
+          <p>Protocols and summaries are published whenever possible. Participants can review their contributions by request.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PARTICIPATE -->
+    <section id="participate" class="section">
+      <div class="wrap">
+        <h2>Participate</h2>
+        <p>Share a little about yourself and how you’d like to be involved—family support, training, or research studies. We’ll follow up with consent options and next steps.</p>
+
+        <!-- Replace YOUR_FORMSPREE_ID -->
+        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="form" aria-labelledby="participate">
+          <div class="form-grid">
+            <label>
+              First name
+              <input name="first_name" type="text" autocomplete="given-name" required />
+            </label>
+            <label>
+              Last name
+              <input name="last_name" type="text" autocomplete="family-name" required />
+            </label>
+          </div>
+
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+
+          <label>
+            I’m interested in
+            <select name="interest" required>
+              <option value="">Select…</option>
+              <option value="family_support">Family support / non-speakers</option>
+              <option value="training_retreats">Training / retreats</option>
+              <option value="research_study">Participating in a study</option>
+              <option value="partnership">Partnership / collaboration</option>
+            </select>
+          </label>
+
+          <label>
+            City / Region
+            <input name="location" type="text" placeholder="e.g., Louisville, KY" />
+          </label>
+
+          <label>
+            Notes
+            <textarea name="message" rows="4" placeholder="Share access needs, interests, or questions—whatever helps us meet you well."></textarea>
+          </label>
+
+          <label style="display:flex;align-items:center;gap:10px">
+            <input type="checkbox" name="consent_updates" style="width:auto;margin:0" />
+            <span>Send occasional updates about studies and offerings.</span>
+          </label>
+
+          <button class="btn btn-primary" type="submit">Reach out</button>
+          <p class="form-note">We won’t share your info. You can opt out anytime.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- CONSENT & CARE -->
+    <section id="care" class="section alt">
+      <div class="wrap two-col">
+        <div>
+          <h2>Consent & Care</h2>
+          <p>Participation is always opt-in. You can pause or withdraw, and you choose what gets recorded or kept private. Our culture is slow, kind, and clear.</p>
+          <ul class="list">
+            <li>Consent by design, every step</li>
+            <li>Minimal, purpose-limited data</li>
+            <li>Participant review on request</li>
+          </ul>
+        </div>
+        <aside class="card">
+          <h3>Accessibility</h3>
+          <p>We adapt pace, format, and space—outdoor garden sessions, low-stim rooms, and flexible timing—to meet different bodies and brains with respect.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="wrap two-col">
+        <div>
+          <h2>About</h2>
+          <p>The Telepathy Center grew from a simple idea: when people feel safe, seen, and sovereign, connection becomes measurable and meaningful. We walk the line between the mystical and the methodical—trees above us, clean notes in hand.</p>
+          <p><a href="/library.html">Browse the Library →</a></p>
+        </div>
+        <aside class="footnote">
+          <p>Contact: <a class="inline" href="mailto:hello@thetelepathycenter.org">hello@thetelepathycenter.org</a></p>
+          <p>© <span id="year"></span> The Telepathy Center.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('nav');
+    if (toggle && nav){
+      toggle.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        nav.classList.toggle('open');
+      });
+    }
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // JS-enabled hook
+    document.documentElement.classList.add('has-js');
+  </script>
+</body>
+</html>
