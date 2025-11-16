@@ -1,677 +1,699 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Telepathy Center</title>
+    <title>The Telepathy Center - Consciousness Research & Development</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-```
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        background: #fdfdfb;
-        color: #141414;
-        line-height: 1.7;
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
-        font-feature-settings: "kern" 1, "liga" 1;
-    }
-    
-    /* Ultra-refined mesh gradient with sharper definition */
-    .mesh-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: 
-            radial-gradient(at 18% 22%, rgba(240, 236, 224, 0.4) 0px, transparent 55%),
-            radial-gradient(at 82% 18%, rgba(225, 235, 220, 0.32) 0px, transparent 52%),
-            radial-gradient(at 72% 78%, rgba(245, 240, 230, 0.35) 0px, transparent 54%),
-            radial-gradient(at 38% 58%, rgba(232, 228, 218, 0.25) 0px, transparent 50%),
-            #fdfdfb;
-        animation: meshFlow 35s ease-in-out infinite;
-    }
-    
-    @keyframes meshFlow {
-        0%, 100% { 
-            filter: blur(55px) contrast(1.12);
-            opacity: 1;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        50% { 
-            filter: blur(65px) contrast(1.18);
-            opacity: 0.96;
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-    }
-    
-    /* Enhanced noise texture */
-    .mesh-bg::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
-        pointer-events: none;
-    }
-    
-    .container {
-        max-width: 780px;
-        margin: 0 auto;
-        padding: 160px 60px 140px;
-        position: relative;
-    }
-    
-    /* Premium luxury card with enhanced depth */
-    .luxury-card {
-        background: linear-gradient(140deg, 
-            rgba(255, 255, 255, 0.98) 0%, 
-            rgba(255, 255, 255, 0.92) 100%);
-        backdrop-filter: blur(50px) saturate(190%);
-        border-radius: 32px;
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        padding: 72px 64px;
-        box-shadow: 
-            0 0 0 1px rgba(0, 0, 0, 0.018),
-            0 1px 2px rgba(0, 0, 0, 0.015),
-            0 4px 8px rgba(0, 0, 0, 0.02),
-            0 16px 48px rgba(0, 0, 0, 0.06),
-            0 48px 96px rgba(0, 0, 0, 0.045),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9);
-        transition: all 0.65s cubic-bezier(0.19, 1, 0.22, 1);
-        opacity: 0;
-        transform: translateY(35px);
-        animation: luxuryFadeIn 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-    }
-    
-    @keyframes luxuryFadeIn {
-        to {
-            opacity: 1;
-            transform: translateY(0);
+        
+        /* Natural gradient background inspired by Hawaiian landscapes */
+        .nature-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(76, 175, 80, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(33, 150, 243, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(255, 152, 0, 0.04) 0%, transparent 60%),
+                #fafafa;
         }
-    }
-    
-    .luxury-card:hover {
-        background: linear-gradient(140deg, 
-            rgba(255, 255, 255, 1) 0%, 
-            rgba(255, 255, 255, 0.96) 100%);
-        border-color: rgba(139, 163, 136, 0.2);
-        transform: translateY(-6px);
-        box-shadow: 
-            0 0 0 1px rgba(139, 163, 136, 0.1),
-            0 2px 4px rgba(0, 0, 0, 0.02),
-            0 8px 16px rgba(0, 0, 0, 0.03),
-            0 20px 56px rgba(0, 0, 0, 0.09),
-            0 56px 112px rgba(0, 0, 0, 0.07),
-            inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-    
-    /* Special styling for announcement card */
-    .announcement-card {
-        background: linear-gradient(140deg, 
-            rgba(201, 168, 115, 0.08) 0%, 
-            rgba(225, 235, 220, 0.06) 100%);
-        border: 1px solid rgba(201, 168, 115, 0.15);
-    }
-    
-    .announcement-card:hover {
-        background: linear-gradient(140deg, 
-            rgba(201, 168, 115, 0.12) 0%, 
-            rgba(225, 235, 220, 0.08) 100%);
-        border-color: rgba(201, 168, 115, 0.25);
-    }
-    
-    .date-stamp {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.85em;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        color: #c9a873;
-        text-transform: uppercase;
-        margin-bottom: 28px;
-    }
-    
-    .update-title {
-        font-family: 'Gilda Display', serif;
-        font-size: 2.5em;
-        color: #0a0a0a;
-        margin-bottom: 38px;
-        font-weight: 400;
-        letter-spacing: -1px;
-        line-height: 1.15;
-    }
-    
-    h1 {
-        font-family: 'Gilda Display', serif;
-        font-size: 7em;
-        font-weight: 400;
-        margin-bottom: 52px;
-        letter-spacing: -2.5px;
-        color: #0a0a0a;
-        line-height: 1.02;
-        animation: luxuryFadeIn 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.1s backwards;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.01);
-    }
-    
-    p {
-        font-size: 1.15em;
-        color: #3a3a3a;
-        margin-bottom: 34px;
-        font-weight: 400;
-        letter-spacing: -0.01em;
-        line-height: 1.75;
-        animation: luxuryFadeIn 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.2s backwards;
-    }
-    
-    .section-title {
-        font-family: 'Gilda Display', serif;
-        font-size: 3em;
-        color: #0f0f0f;
-        margin: 110px 0 52px;
-        font-weight: 400;
-        letter-spacing: -1.2px;
-        animation: luxuryFadeIn 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.3s backwards;
-    }
-    
-    .divider {
-        width: 54px;
-        height: 1.5px;
-        background: linear-gradient(90deg, 
-            rgba(139, 163, 136, 0.6) 0%, 
-            rgba(139, 163, 136, 0) 100%);
-        margin: 105px 0;
-        animation: luxuryFadeIn 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.4s backwards;
-    }
-    
-    .video-container {
-        margin: 90px 0;
-        animation: luxuryFadeIn 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.5s backwards;
-    }
-    
-    .video {
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 
-            0 0 0 1px rgba(0, 0, 0, 0.025),
-            0 2px 4px rgba(0, 0, 0, 0.02),
-            0 8px 20px rgba(0, 0, 0, 0.05),
-            0 24px 64px rgba(0, 0, 0, 0.09),
-            0 64px 144px rgba(0, 0, 0, 0.08);
-        transition: all 0.65s cubic-bezier(0.19, 1, 0.22, 1);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-    }
-    
-    .video:hover {
-        transform: translateY(-10px);
-        box-shadow: 
-            0 0 0 1px rgba(0, 0, 0, 0.03),
-            0 4px 8px rgba(0, 0, 0, 0.03),
-            0 12px 28px rgba(0, 0, 0, 0.06),
-            0 32px 80px rgba(0, 0, 0, 0.12),
-            0 80px 176px rgba(0, 0, 0, 0.11);
-    }
-    
-    .video-caption {
-        text-align: center;
-        font-size: 0.95em;
-        color: #6a6a6a;
-        margin-top: 30px;
-        font-style: italic;
-        letter-spacing: 0.02em;
-        font-weight: 400;
-    }
-    
-    .form-section {
-        margin: 110px 0;
-        animation: luxuryFadeIn 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.7s backwards;
-    }
-    
-    .form-section h2 {
-        font-family: 'Gilda Display', serif;
-        font-size: 3.2em;
-        margin-bottom: 22px;
-        text-align: center;
-        font-weight: 400;
-        color: #0a0a0a;
-        letter-spacing: -1.2px;
-    }
-    
-    .form-intro {
-        text-align: center;
-        margin-bottom: 52px;
-        font-size: 1.08em;
-        color: #5a5a5a;
-        font-weight: 400;
-    }
-    
-    input, textarea {
-        width: 100%;
-        padding: 22px 26px;
-        margin-bottom: 24px;
-        background: rgba(255, 255, 255, 0.7);
-        border: 1px solid rgba(20, 20, 20, 0.09);
-        color: #141414;
-        border-radius: 16px;
-        font-family: 'Inter', sans-serif;
-        font-size: 1.02em;
-        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-        letter-spacing: -0.01em;
-        font-weight: 400;
-    }
-    
-    input::placeholder, textarea::placeholder {
-        color: rgba(58, 58, 58, 0.48);
-    }
-    
-    input:focus, textarea:focus {
-        outline: none;
-        border-color: rgba(139, 163, 136, 0.4);
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: 
-            0 0 0 5px rgba(139, 163, 136, 0.07),
-            0 2px 8px rgba(0, 0, 0, 0.02),
-            0 8px 20px rgba(0, 0, 0, 0.05),
-            inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-    
-    textarea {
-        resize: vertical;
-        min-height: 140px;
-    }
-    
-    button {
-        width: 100%;
-        padding: 24px;
-        background: #141414;
-        color: #ffffff;
-        border: none;
-        border-radius: 16px;
-        font-family: 'Inter', sans-serif;
-        font-weight: 600;
-        font-size: 1.08em;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-        letter-spacing: 0.02em;
-        box-shadow: 
-            0 1px 2px rgba(0, 0, 0, 0.14),
-            0 4px 12px rgba(0, 0, 0, 0.12),
-            0 12px 28px rgba(0, 0, 0, 0.16);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    button::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-        transition: left 0.7s ease;
-    }
-    
-    button:hover::before {
-        left: 100%;
-    }
-    
-    button:hover {
-        background: #0a0a0a;
-        transform: translateY(-3px);
-        box-shadow: 
-            0 2px 4px rgba(0, 0, 0, 0.14),
-            0 8px 20px rgba(0, 0, 0, 0.14),
-            0 16px 40px rgba(0, 0, 0, 0.2);
-    }
-    
-    button:active {
-        transform: translateY(-1px);
-    }
-    
-    .announcement {
-        text-align: center;
-        margin: 110px 0;
-        animation: luxuryFadeIn 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.8s backwards;
-    }
-    
-    .announcement p {
-        font-family: 'Gilda Display', serif;
-        font-size: 3.5em;
-        color: #c9a873;
-        font-weight: 400;
-        letter-spacing: -0.5px;
-        margin: 0;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-    }
-    
-    .feature-list {
-        display: grid;
-        gap: 48px;
-        margin-top: 48px;
-    }
-    
-    .feature {
-        display: grid;
-        grid-template-columns: 60px 1fr;
-        gap: 26px;
-        align-items: start;
-    }
-    
-    .icon-wrapper {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(140deg, 
-            rgba(255, 255, 255, 0.95) 0%, 
-            rgba(248, 248, 245, 0.85) 100%);
-        border-radius: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid rgba(139, 163, 136, 0.15);
-        box-shadow: 
-            0 1px 2px rgba(0, 0, 0, 0.02),
-            0 2px 6px rgba(0, 0, 0, 0.03),
-            0 6px 16px rgba(0, 0, 0, 0.05),
-            inset 0 1px 0 rgba(255, 255, 255, 0.95);
-        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-    
-    .feature:hover .icon-wrapper {
-        background: linear-gradient(140deg, 
-            rgba(255, 255, 255, 1) 0%, 
-            rgba(250, 250, 248, 0.92) 100%);
-        border-color: rgba(139, 163, 136, 0.25);
-        transform: translateY(-3px);
-        box-shadow: 
-            0 2px 4px rgba(0, 0, 0, 0.03),
-            0 4px 10px rgba(0, 0, 0, 0.04),
-            0 10px 24px rgba(0, 0, 0, 0.07),
-            inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-    
-    .icon-wrapper svg {
-        width: 28px;
-        height: 28px;
-    }
-    
-    .feature-text h3 {
-        font-family: 'Inter', sans-serif;
-        font-size: 1.15em;
-        font-weight: 600;
-        color: #0f0f0f;
-        margin-bottom: 12px;
-        letter-spacing: -0.02em;
-    }
-    
-    .feature-text p {
-        font-size: 1.08em;
-        color: #3a3a3a;
-        margin: 0;
-        line-height: 1.72;
-        font-weight: 400;
-    }
-    
-    footer {
-        margin-top: 160px;
-        padding-top: 56px;
-        border-top: 1.5px solid rgba(20, 20, 20, 0.07);
-        text-align: center;
-        color: #949494;
-        font-size: 0.95em;
-        letter-spacing: 0.015em;
-        animation: luxuryFadeIn 1.2s cubic-bezier(0.19, 1, 0.22, 1) 1s backwards;
-        font-weight: 400;
-    }
-    
-    strong {
-        color: #0f0f0f;
-        font-weight: 600;
-    }
-    
-    /* Scroll reveal */
-    .reveal {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-    
-    .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    @media (max-width: 768px) {
+        
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #1a1a1a;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
         h1 {
-            font-size: 4.5em;
-            letter-spacing: -2px;
+            font-size: 4em;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: -1.5px;
+            color: #1a1a1a;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4em;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        /* Clean Card */
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 50px;
+            margin: 60px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: rgba(76, 175, 80, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
         
         .section-title {
-            font-size: 2.4em;
-            letter-spacing: -1px;
+            font-size: 2.5em;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
         }
         
-        .luxury-card {
-            padding: 52px 42px;
-            border-radius: 28px;
+        .section-subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.7;
         }
         
-        .container {
-            padding: 120px 40px 100px;
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
         
-        .feature {
-            grid-template-columns: 52px 1fr;
-            gap: 22px;
+        .grid-item {
+            padding: 30px;
+            background: #fafafa;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
         }
         
-        .icon-wrapper {
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
+        .grid-item:hover {
+            background: #ffffff;
+            border-color: rgba(76, 175, 80, 0.2);
+            transform: translateY(-2px);
         }
         
-        .icon-wrapper svg {
+        .grid-item-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%);
+            border-radius: 12px;
+            opacity: 0.9;
+        }
+        
+        .grid-item-icon svg {
             width: 24px;
             height: 24px;
+            stroke: #ffffff;
         }
         
-        .announcement p {
-            font-size: 2.8em;
-        }
-    }
-
-    @media (max-width: 480px) {
-        h1 {
-            font-size: 3.5em;
-            letter-spacing: -1.5px;
+        .grid-item h3 {
+            font-size: 1.3em;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 12px;
         }
         
-        .container {
-            padding: 100px 30px 80px;
+        .grid-item p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.98em;
         }
         
-        .luxury-card {
-            padding: 42px 32px;
+        /* Nature-inspired accent section */
+        .nature-accent {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(33, 150, 243, 0.08) 100%);
+            border-radius: 16px;
+            padding: 60px;
+            margin: 60px 0;
+            border: 1px solid rgba(76, 175, 80, 0.2);
         }
-    }
-</style>
-```
-
+        
+        .nature-accent h2 {
+            font-size: 2.5em;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        
+        .nature-accent p {
+            font-size: 1.2em;
+            color: #444;
+            line-height: 1.8;
+        }
+        
+        /* Stats Display */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: 300;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: #1a1a1a;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 1em;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid #1a1a1a;
+        }
+        
+        .cta-button:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-button-outline {
+            background: transparent;
+            color: #1a1a1a;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button-outline:hover {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 40px auto;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            background: #fafafa;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #1a1a1a;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.98em;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background: #ffffff;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        button[type="submit"] {
+            width: 100%;
+            padding: 16px;
+            background: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button[type="submit"]:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            padding: 50px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            text-align: center;
+            color: #666;
+        }
+        
+        footer a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: #4CAF50;
+        }
+        
+        /* Spacer */
+        .spacer {
+            height: 80px;
+        }
+        
+        /* List styling */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 16px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #444;
+            font-size: 1.05em;
+        }
+        
+        .feature-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: 500;
+        }
+        
+        /* Mobile hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #1a1a1a;
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            .section-title { font-size: 2em; }
+            .card { padding: 30px; }
+            .nature-accent { padding: 40px 30px; }
+            .grid { grid-template-columns: 1fr; }
+            
+            .hamburger { display: flex; }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(250, 250, 250, 0.98);
+                flex-direction: column;
+                padding: 20px 40px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="mesh-bg"></div>
+    <div class="nature-bg"></div>
 
-```
-<div class="container">
-    <h1>The Telepathy<br>Center</h1>
-    
-    <p>We're building a world where consciousness research feels like play.</p>
-    
-    <p>Where telepathy isn't just accepted—it's celebrated. Where practitioners thrive professionally. Where families discover community instead of isolation.</p>
-    
-    <div class="divider"></div>
-    
-    <!-- 11/11 Announcement -->
-    <div class="luxury-card announcement-card reveal" style="animation-delay: 0s;">
-        <div class="date-stamp">11.11.2025 Update</div>
-        <h2 class="update-title">Roots Establishing</h2>
-        <p>The Telepathy Center is becoming a 501(c)(3) nonprofit organization, anchored in the Hawaiian Islands—a place where Earth's consciousness pulses strongest.</p>
-        
-        <p>We're building infrastructure to support consciousness practitioners, fund open research, and create sanctuary for families navigating extraordinary gifts.</p>
-        
-        <p>This is being done slowly. Intentionally. With cultural humility and scientific rigor.</p>
-        
-        <p><strong>Founding Circle Opening Soon</strong></p>
-        
-        <p style="margin-bottom: 0;">We're preparing to invite a small cohort of practitioners, researchers, and aligned supporters to help shape our foundation. If you feel called to this work, <em>reach out</em>. More details coming in the weeks ahead. The underground network is forming.</p>
-    </div>
-    
-    <div class="luxury-card reveal">
-        <p>A nonprofit network connecting consciousness practitioners with genuine opportunities. Funding research that advances the field. Supporting families navigating extraordinary experiences. Creating sanctuary for those who feel deeply.</p>
-        
-        <p style="margin-bottom: 0;"><strong>We're not there yet. But we're building it together.</strong></p>
-    </div>
-    
-    <div class="video-container">
-        <div class="video">
-            <iframe width="100%" height="440" src="https://www.youtube.com/embed/aX9ogv0PEug?si=5ZyHHw4r-ShzCkB-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="display: block;"></iframe>
-        </div>
-        <p class="video-caption">The Telepathy Camp — where it all comes together</p>
-    </div>
-    
-    <div class="divider"></div>
-    
-    <p class="section-title">What We're Creating</p>
-    
-    <div class="luxury-card reveal">
-        <div class="feature-list">
-            <div class="feature">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#6b8e6b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M12 16v-4"/>
-                        <path d="M12 8h.01"/>
-                    </svg>
-                </div>
-                <div class="feature-text">
-                    <h3>For Practitioners</h3>
-                    <p>A professional network. Real opportunities. Fair compensation. Community that understands.</p>
-                </div>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">The Telepathy Center</div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            
-            <div class="feature">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#6b8e6b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                        <polyline points="7.5 4.21 12 6.81 16.5 4.21"/>
-                        <polyline points="7.5 19.79 7.5 14.6 3 12"/>
-                        <polyline points="21 12 16.5 14.6 16.5 19.79"/>
-                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                        <line x1="12" y1="22.08" x2="12" y2="12"/>
-                    </svg>
-                </div>
-                <div class="feature-text">
-                    <h3>For Researchers</h3>
-                    <p>Funding. Collaborative partnerships. Ethical data collection that honors participants.</p>
-                </div>
-            </div>
-            
-            <div class="feature">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#6b8e6b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                </div>
-                <div class="feature-text">
-                    <h3>For Families</h3>
-                    <p>Resources for non-speakers and neurodivergent individuals. Honoring The Telepathy Tapes movement.</p>
-                </div>
-            </div>
-            
-            <div class="feature">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#6b8e6b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                        <line x1="9" y1="9" x2="9.01" y2="9"/>
-                        <line x1="15" y1="9" x2="15.01" y2="9"/>
-                    </svg>
-                </div>
-                <div class="feature-text">
-                    <h3>For Everyone</h3>
-                    <p>Education. Transformative workshops. A place to belong without pretense.</p>
-                </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#contact">Connect</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero container">
+        <div class="hero-content">
+            <h1>Advancing Consciousness Research Through Science & Nature</h1>
+            <p class="hero-subtitle">
+                A research and development center in Hawaiʻi exploring human consciousness capacities through rigorous scientific methodology, ancient wisdom practices, and deep respect for the natural world.
+            </p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <a href="#about" class="cta-button">Learn More</a>
+                <a href="#contact" class="cta-button cta-button-outline">Get Involved</a>
             </div>
         </div>
+    </section>
+
+    <div class="container">
+        <!-- Mission -->
+        <section id="about" class="card">
+            <h2 class="section-title">Our Mission</h2>
+            <p class="section-subtitle">
+                We're building a nonprofit research center that validates and develops human consciousness capacities—telepathy, remote viewing, and intuitive perception—through systematic training, measurable outcomes, and ethical research protocols.
+            </p>
+            <p style="color: #444; font-size: 1.05em; line-height: 1.8;">
+                Our work honors both scientific rigor and the wisdom of indigenous traditions, creating a bridge between ancient knowledge and contemporary research. We provide sanctuary for researchers, practitioners, and individuals exploring extraordinary perception, all while respecting the sacred lands and ecosystems of Hawaiʻi.
+            </p>
+        </section>
+
+        <!-- What We Offer -->
+        <section>
+            <h2 class="section-title">What We Offer</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <div class="grid-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
+                        </svg>
+                    </div>
+                    <h3>Systematic Training</h3>
+                    <p>Evidence-based protocols for developing consciousness abilities with measurable outcomes</p>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="grid-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>Research Collaboration</h3>
+                    <p>Funding and infrastructure for ethical consciousness research with proper IRB protocols</p>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="grid-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Community Support</h3>
+                    <p>Professional network for practitioners, researchers, and individuals with extraordinary experiences</p>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="grid-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                    </div>
+                    <h3>Educational Resources</h3>
+                    <p>Training programs, workshops, and materials for consciousness development practitioners</p>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="grid-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3>Integration Support</h3>
+                    <p>Guidance for individuals navigating contact experiences and expanded states of consciousness</p>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="grid-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Family Resources</h3>
+                    <p>Support for families with neurodivergent members and non-speaking individuals</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="spacer"></div>
+
+        <!-- Research Approach -->
+        <section id="research" class="card">
+            <h2 class="section-title">Research Approach</h2>
+            <p class="section-subtitle">
+                We combine rigorous scientific methodology with respect for consciousness as a fundamental aspect of nature.
+            </p>
+            <ul class="feature-list">
+                <li>Validated remote viewing protocols with measurable accuracy metrics</li>
+                <li>Controlled telepathy experiments with statistical analysis</li>
+                <li>Documented outcomes from consciousness development training</li>
+                <li>Ethical research frameworks with full participant consent</li>
+                <li>IRB-approved studies and peer collaboration</li>
+                <li>Transparent methodology and honest reporting of all results</li>
+                <li>Integration of indigenous knowledge systems with contemporary science</li>
+            </ul>
+        </section>
+
+        <!-- Hawaiian Connection -->
+        <section class="nature-accent">
+            <h2>Rooted in Hawaiʻi's Natural Wisdom</h2>
+            <p style="margin-bottom: 20px;">
+                Our center is anchored in the Hawaiian Islands, where volcanic landscapes, ocean ecosystems, and indigenous traditions offer profound lessons about consciousness, transformation, and interconnection.
+            </p>
+            <p style="margin-bottom: 20px;">
+                We partner with Native Hawaiian communities through respectful collaboration—revenue sharing, cultural protocol oversight, employment priority for local practitioners, and genuine knowledge exchange. We are students and partners, not extractors.
+            </p>
+            <p style="margin-bottom: 0;">
+                Hawaiian traditions, along with Vedic, Shamanic, Buddhist, and other wisdom lineages, inform our understanding that consciousness development is a natural human capacity cultivated across cultures for millennia.
+            </p>
+        </section>
+
+        <!-- Who We Serve -->
+        <section id="community">
+            <h2 class="section-title">Who We Serve</h2>
+            <p class="section-subtitle">
+                Our community includes diverse perspectives united by curiosity about human consciousness.
+            </p>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>Researchers</h3>
+                    <p>Scientists exploring consciousness through controlled experiments and measurable data</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Practitioners</h3>
+                    <p>Individuals developing remote viewing, telepathy, and intuitive perception abilities</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Families</h3>
+                    <p>Parents and caregivers supporting neurodivergent individuals and extraordinary experiences</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Educators</h3>
+                    <p>Teachers and facilitators sharing consciousness development practices</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Experiencers</h3>
+                    <p>Those navigating contact phenomena, precognition, and expanded awareness</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Supporters</h3>
+                    <p>Donors and partners helping build infrastructure for consciousness research</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="spacer"></div>
+
+        <!-- Goals -->
+        <section class="card">
+            <h2 class="section-title">Our Goals</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Participants by Year 3</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">501(c)(3)</div>
+                    <div class="stat-label">Nonprofit Structure</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Year 1</div>
+                    <div class="stat-label">Launching 2025</div>
+                </div>
+            </div>
+            <p style="color: #666; text-align: center; margin-top: 30px;">
+                Building systematic training programs, conducting rigorous research, and creating sustainable community infrastructure.
+            </p>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="card">
+            <h2 class="section-title">Connect With Us</h2>
+            <p class="section-subtitle">
+                Whether you're a researcher, practitioner, supporter, or simply curious—we welcome thoughtful inquiry.
+            </p>
+            
+            <div class="contact-form">
+                <form name="telepathy-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="telepathy-contact">
+                    <p style="display: none;">
+                        <label>Don't fill: <input name="bot-field" /></label>
+                    </p>
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <textarea name="message" placeholder="Tell us about your interest in consciousness research..." required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
     </div>
-    
-    <div class="form-section">
-        <div class="luxury-card reveal">
-            <h2>Connect With Us</h2>
-            <p class="form-intro">Whether you're a practitioner, researcher, family member, or simply curious—<br>especially if you're interested in joining the Founding Circle.</p>
-            <form name="telepathy-contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="telepathy-contact">
-                <p style="display: none;">
-                    <label>Don't fill: <input name="bot-field" /></label>
-                </p>
-                <input type="text" name="name" placeholder="Your name" required>
-                <input type="email" name="email" placeholder="Your email" required>
-                <textarea name="message" rows="5" placeholder="What draws you here?" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </div>
-    
+
+    <!-- Footer -->
     <footer>
-        <p>© 2025 The Telepathy Center · Building in Hawaiʻi</p>
-        <p style="margin-top: 12px; font-size: 0.9em;">Contact: <a href="mailto:info@thetelepathycenter.com" style="color: #6b8e6b; text-decoration: none;">info@thetelepathycenter.com</a></p>
+        <div class="container">
+            <p>© 2025 The Telepathy Center · Hawaiʻi · A 501(c)(3) Nonprofit</p>
+            <p style="margin-top: 12px;">
+                <a href="mailto:info@thetelepathycenter.com">info@thetelepathycenter.com</a>
+            </p>
+        </div>
     </footer>
-</div>
 
-<!-- Hidden Easter Egg: Follow the white rabbit... -->
-<a href="#" class="rabbit-egg" title="Follow the white rabbit...">🐇</a>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Scroll reveal with intersection observer for performance
-    const revealElements = document.querySelectorAll('.reveal');
-    
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
-    });
-    
-    // Easter Egg: White Rabbit portal switcher
-    const rabbit = document.querySelector('.rabbit-egg');
-    if (rabbit) {
-        const sites = [
-            'https://nightunderthestars.com',
-            'https://thelegacyvoices.com'
-        ];
-        let currentSite = 0;
-```
+        
+        // Intersection observer for cards
+        const cards = document.querySelectorAll('.card, .grid-item, .nature-accent');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
