@@ -11,16 +11,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- 1. THEME: Bio-Digital --- */
+        /* --- 1. THEME --- */
         :root {
-            --bg-color: #020305; /* Void Black */
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
-            
-            /* The Gradient: Technology (Cyan) meeting Nature (Green) */
+            --bg-color: #020305;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.15);
             --tech-cyan: #00f2ff; 
             --bio-green: #64ffda; 
-            
             --text-main: #ffffff;
             --text-muted: #8892b0;
         }
@@ -43,24 +40,23 @@
         /* --- 2. THE CYBER-TREE (SVG BACKGROUND) --- */
         .tree-container {
             position: absolute;
-            bottom: -50px; /* Anchored to bottom */
+            bottom: -50px;
             left: 50%;
             transform: translateX(-50%);
             width: 600px;
             height: 600px;
-            z-index: -1; /* Behind the text */
+            z-index: -1;
             opacity: 0.4;
             pointer-events: none;
         }
 
-        /* The heartbeat animation of the tree */
         #circuit-tree line, #circuit-tree circle {
             animation: pulse-tree 4s infinite ease-in-out;
         }
 
         @keyframes pulse-tree {
             0% { stroke: var(--tech-cyan); stroke-opacity: 0.3; }
-            50% { stroke: var(--bio-green); stroke-opacity: 0.8; } /* Shifts to green */
+            50% { stroke: var(--bio-green); stroke-opacity: 0.8; }
             100% { stroke: var(--tech-cyan); stroke-opacity: 0.3; }
         }
 
@@ -70,7 +66,7 @@
             max-width: 700px;
             text-align: center;
             z-index: 10;
-            padding-bottom: 50px; /* Space for the tree roots */
+            padding-bottom: 60px;
         }
 
         .eyebrow {
@@ -91,7 +87,6 @@
             letter-spacing: -2px;
             line-height: 1.1;
             margin-bottom: 2rem;
-            /* Gradient Text Effect */
             background: linear-gradient(to right, white, #a5b4fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -108,9 +103,9 @@
             margin-right: auto;
         }
 
-        /* --- 4. THE FORM (The Bridge) --- */
+        /* --- 4. THE NEURAL PORT (Form Design) --- */
         .input-group {
-            position: relative;
+            position: relative; /* Anchor for absolute items */
             max-width: 420px;
             margin: 0 auto;
             display: flex;
@@ -118,30 +113,63 @@
             gap: 15px;
         }
 
+        /* The Container for the Input + Icon */
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        /* The Glowing @ Symbol */
+        .input-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--tech-cyan);
+            font-family: 'Space Grotesk', monospace;
+            font-size: 1.2rem;
+            z-index: 2;
+            pointer-events: none; /* Let clicks pass through to the input */
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+            animation: blink-cursor 2s infinite;
+        }
+
+        @keyframes blink-cursor {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* The Input Field */
         input[type="email"] {
             width: 100%;
-            padding: 16px 24px;
+            padding: 16px 24px 16px 50px; /* Left padding creates space for the @ */
             background: rgba(0,0,0,0.6);
             border: 1px solid var(--border);
-            border-radius: 50px; /* Pill shape is more organic */
+            border-radius: 50px;
             color: white;
             font-family: 'Space Grotesk', monospace;
             font-size: 1rem;
             outline: none;
-            text-align: center;
             transition: 0.3s;
             backdrop-filter: blur(5px);
         }
 
+        /* Interaction State */
         input[type="email"]:focus {
             border-color: var(--bio-green);
             box-shadow: 0 0 20px rgba(100, 255, 218, 0.1);
+            background: rgba(255,255,255,0.05);
+        }
+        
+        /* When input is focused, change the icon color too */
+        input[type="email"]:focus + .input-icon { 
+            /* This selector is tricky in CSS, so we just let the icon stay Cyan or animate naturally */
         }
 
-        /* Fun Placeholder Color */
         ::placeholder { 
             color: #555; 
             font-style: italic;
+            font-size: 0.9rem;
         }
 
         button {
@@ -175,7 +203,6 @@
             letter-spacing: 1px;
         }
 
-        /* Mobile Adjustments */
         @media (max-width: 600px) {
             .tree-container { width: 100%; bottom: -20px; }
             h1 { font-size: 2.2rem; }
@@ -187,25 +214,20 @@
     <div class="tree-container">
         <svg id="circuit-tree" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <line x1="100" y1="200" x2="100" y2="150" stroke="currentColor" stroke-width="2" />
-            
             <line x1="100" y1="150" x2="70" y2="120" stroke="currentColor" stroke-width="1.5" />
             <line x1="100" y1="150" x2="130" y2="120" stroke="currentColor" stroke-width="1.5" />
-            
             <line x1="70" y1="120" x2="50" y2="90" stroke="currentColor" stroke-width="1" />
             <line x1="70" y1="120" x2="85" y2="95" stroke="currentColor" stroke-width="1" />
             <line x1="130" y1="120" x2="150" y2="90" stroke="currentColor" stroke-width="1" />
             <line x1="130" y1="120" x2="115" y2="95" stroke="currentColor" stroke-width="1" />
-
             <line x1="50" y1="90" x2="40" y2="60" stroke="currentColor" stroke-width="0.5" />
             <line x1="50" y1="90" x2="60" y2="70" stroke="currentColor" stroke-width="0.5" />
             <line x1="150" y1="90" x2="160" y2="60" stroke="currentColor" stroke-width="0.5" />
             <line x1="150" y1="90" x2="140" y2="70" stroke="currentColor" stroke-width="0.5" />
-            
             <circle cx="40" cy="60" r="2" fill="none" stroke="currentColor" stroke-width="1"/>
             <circle cx="160" cy="60" r="2" fill="none" stroke="currentColor" stroke-width="1"/>
             <circle cx="100" cy="110" r="1.5" fill="none" stroke="currentColor" stroke-width="1"/>
             <circle cx="100" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="0.5"/>
-            
             <line x1="100" y1="150" x2="100" y2="50" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2,2"/>
         </svg>
     </div>
@@ -226,7 +248,11 @@
 
         <form name="interest-list" method="POST" data-netlify="true" class="input-group">
             
-            <input type="email" name="email" placeholder="Transmit Signal..." required>
+            <div class="input-wrapper">
+                <span class="input-icon">@</span>
+                
+                <input type="email" name="email" placeholder="Transmit Signal..." required>
+            </div>
             
             <button type="submit">Join the Network</button>
         </form>
